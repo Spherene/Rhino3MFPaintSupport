@@ -3,11 +3,8 @@
 # r: scipy
 
 import numpy as np
-
 import rhinoscriptsyntax as rs
-import xml.etree.ElementTree as ET
-import sys
-import io 
+import io
 from scipy.spatial import KDTree
 import shutil
 
@@ -111,7 +108,16 @@ path1 = template_path + fname
 path2 = out_path + fname
 import shutil
 s = generate_xml(path1, vertices, unsupported, supported)
-open(path2, "w").write(s)
+open(path2, "w", newline='\n').write(s)
+
+def normalize_line_endings(out_path):
+    import pathlib
+    for p in pathlib.Path(out_path).rglob("*"):
+        if p.suffix in [".xml", ".model", ".txt"]:  # whatever extensions matter
+            text = p.read_text(encoding="utf-8")
+            p.write_text(text.replace('\r\n', '\n'), encoding="utf-8", newline='\n')
+
+normalize_line_endings(out_path)
 
 name = "out"
 created_archive_path = shutil.make_archive(
