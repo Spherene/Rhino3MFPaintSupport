@@ -115,7 +115,7 @@ def normalize_line_endings(out_path):
     for p in pathlib.Path(out_path).rglob("*"):
         if p.suffix in [".xml", ".model", ".txt"]:  # whatever extensions matter
             text = p.read_text(encoding="utf-8")
-            p.write_text(text.replace('\r\n', '\n'), encoding="utf-8", newline='\n')
+            p.write_text(text.replace('\r\n', '\n'), encoding="utf-8")
 
 normalize_line_endings(out_path)
 
