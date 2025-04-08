@@ -37,7 +37,6 @@ def get_neighbourhood(ind):
 def get_green_downward_faces(mesh):
     normals = mesh.FaceNormals
     normals = np.array([tuple(n) for n in normals])
-    print(normals)
     colors = mesh.VertexColors
     greens = np.array([c.G for c in colors])
     cond1 = greens > 200
@@ -85,7 +84,6 @@ vertices = np.array([tuple(v) for v in mesh.Vertices])
 shift_z = np.array((0, 0, -vertices[:, 2].min()))
 vertices += shift_z
 points += shift_z
-print(len(vertices))
 faces = mesh.Faces
 faces = np.array([[f.A, f.B, f.C] for f in faces])
 
