@@ -1,7 +1,7 @@
 # Rhino3MFPaintSupport
 
 The purpose of this script is to generated support for Spherene geometry at the support points. Since this is highly printer dependent we deliever this functionality as a script.
-See http:/spherene.ch howto generate spherene geometry
+See https://spherene.ch howto generate spherene geometry
 
 
 This is a CPython Script for Rhino8. The purpose of this script is to create support in a 3mf Files. It seems that each slicer has a bit of a dialect for marking the support in the 3mf. If you need to change than change the line 24 in the python script:
