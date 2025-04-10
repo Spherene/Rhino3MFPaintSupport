@@ -32,11 +32,13 @@ def get_neighbourhood(ind):
     return cond
 
 def get_green_downward_faces(mesh):
+    mesh.FaceNormals.ComputeFaceNormals()
     normals = mesh.FaceNormals
     normals = np.array([tuple(n) for n in normals])
     colors = mesh.VertexColors
     greens = np.array([c.G for c in colors])
     cond1 = greens > 200
+    print(f"#green = {np.sum(cond1)}")
     faces = np.array([[f.A, f.B, f.C] for f in mesh.Faces])
     fcond1 = cond1[faces]
     cond1 = np.any(fcond1, axis=1)
